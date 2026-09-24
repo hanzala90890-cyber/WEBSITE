@@ -1,0 +1,95 @@
+::1 - - [24/Sep/2026 10:09:02] "GET /vaporix-store.html HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 10:09:03] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:03] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:04] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:04] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:05] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:05] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:08] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:08] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:13] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:13] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:22] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:22] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:09:39] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:09:39] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:10:16] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:10:16] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:10:40] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:10:40] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:10:41] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:10:41] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:10:43] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:10:43] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:10:45] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:10:45] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:36] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:36] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:37] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:37] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:38] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:38] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:41] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:41] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:45] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:45] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:11:53] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:11:53] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:13:49] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:13:49] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:13:50] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:13:50] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:13:51] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:13:51] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:13:53] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:13:53] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:13:58] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:13:58] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:14:59] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:14:59] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:14:59] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:14:59] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:15:01] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:15:01] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:15:04] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:15:04] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:15:04] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:15:04] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:15:05] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:15:05] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:19:12] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:19:12] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:19:13] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:19:13] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:19:14] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:19:14] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:26:03] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:26:03] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:26:04] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:26:04] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:26:06] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:26:06] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 10:26:08] code 501, message Unsupported method ('POST')
+::1 - - [24/Sep/2026 10:26:08] "POST /v1/chat/completions HTTP/1.1" 501 -
+::1 - - [24/Sep/2026 12:44:38] "GET / HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:44:38] "GET /index.html HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:44:38] "GET /vaporix-store.html HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET / HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /css/base.css HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /css/layout.css HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /css/components.css HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /css/animations.css HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/firebase-config.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /assets/images/logo.jpg HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/data.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/auth.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/router.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/shop.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/contact.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/admin.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/chatbot.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/hero3d.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /js/main.js HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] "GET /ANIMATION.mp4 HTTP/1.1" 200 -
+::1 - - [24/Sep/2026 12:52:30] code 404, message File not found
+::1 - - [24/Sep/2026 12:52:30] "GET /favicon.ico HTTP/1.1" 404 -

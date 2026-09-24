@@ -1,0 +1,427 @@
+/* ==========================================
+   LAYOUT.CSS - Navbar, Footer, Grid/Wrap
+   ========================================== */
+
+/* NAV - Glass Morphism */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--line-bright);
+  padding-top:env(safe-area-inset-top,0px);
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1180px;
+  margin:0 auto;
+  padding:12px 22px;
+}
+
+.logo-group{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+}
+
+.logo-group img{
+  height:46px;
+  width:46px;
+  border-radius:10px;
+  object-fit:cover;
+  box-shadow:0 0 20px var(--gold-glow);
+  border:2px solid var(--gold-dark);
+}
+
+.brand{
+  color:var(--gold);
+  font-size:1.25rem;
+  transition:color .3s ease,letter-spacing .3s ease,text-shadow .3s ease;
+  display:inline-block;
+}
+
+.brand small{
+  display:block;
+  font-family:'Inter';
+  font-size:.55rem;
+  letter-spacing:3px;
+  color:var(--ink-dim);
+  font-weight:600;
+  transition:color .3s ease;
+}
+
+.logo-group:hover .brand{
+  color:var(--gold-bright);
+  letter-spacing:1.5px;
+  text-shadow:0 0 30px rgba(242,169,59,.8), 0 0 60px rgba(242,169,59,.4);
+}
+
+.logo-group:hover .brand small{
+  color:var(--gold);
+}
+
+.logo-group:hover img{
+  transform:rotate(-4deg) scale(1.05);
+}
+
+.logo-group img{
+  transition:transform .3s ease;
+}
+
+.navlinks{
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+.navlinks button{
+  position:relative;
+  background:none;
+  border:none;
+  color:var(--ink-dim);
+  font:600 .92rem 'Inter';
+  padding:10px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:color .25s ease,letter-spacing .25s ease,background .25s ease;
+}
+
+.navlinks button::after{
+  content:'';
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:6px;
+  height:2px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .3s ease;
+}
+
+.navlinks button:hover,.navlinks button.active{
+  color:var(--gold-bright);
+  letter-spacing:.6px;
+  background:rgba(242,169,59,.15);
+  text-shadow:0 0 20px rgba(242,169,59,.7);
+  box-shadow:0 4px 20px rgba(242,169,59,.2);
+}
+
+.navlinks button:hover::after,.navlinks button.active::after{
+  transform:scaleX(1);
+}
+
+.navlinks .pill{
+  border:1px solid var(--gold-dark);
+  color:var(--gold);
+  border-radius:999px;
+  padding:8px 16px;
+}
+
+#hamburger{
+  display:none;
+  background:none;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--gold);
+  font-size:1.2rem;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+.userchip{
+  color:var(--ink-dim);
+  font-size:.85rem;
+  padding:8px 10px;
+}
+
+/* FOOTER - Premium */
+footer{
+  border-top:1px solid var(--line-bright);
+  padding:3rem 0;
+  text-align:center;
+  color:var(--ink-dim);
+  font-size:.85rem;
+  background:linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.5) 100%);
+  backdrop-filter:blur(10px);
+}
+
+footer a{
+  transition:color .25s ease,letter-spacing .25s ease;
+}
+
+footer a:hover{
+  color:var(--gold-bright);
+  letter-spacing:.5px;
+}
+
+/* RESPONSIVE BREAKPOINTS
+   Mobile:  320px–767px
+   Tablet:  768px–1023px
+   Laptop:  1024px–1439px
+   Desktop: 1440px+
+*/
+
+/* DESKTOP (1440px+) — no changes needed, base styles apply */
+
+/* LAPTOP (1024px–1439px) */
+@media(max-width:1439px){
+  nav{
+    padding:10px 18px;
+  }
+
+  .logo-group img{
+    height:42px;
+    width:42px;
+  }
+
+  .brand{
+    font-size:1.1rem;
+  }
+
+  .navlinks button{
+    padding:8px 12px;
+    font-size:.85rem;
+  }
+}
+
+/* TABLET (768px–1023px) */
+@media(max-width:1023px){
+  nav{
+    padding:10px 16px;
+  }
+
+  .logo-group img{
+    height:40px;
+    width:40px;
+  }
+
+  .brand{
+    font-size:1.05rem;
+  }
+
+  .brand small{
+    font-size:.5rem;
+  }
+
+  .navlinks{
+    gap:4px;
+  }
+
+  .navlinks button{
+    padding:8px 10px;
+    font-size:.82rem;
+  }
+
+  .hero{
+    padding:60px 0 40px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding:0 16px;
+  }
+
+  #hero3d{
+    max-width:360px;
+    margin:0 auto;
+  }
+
+  .section-head h2{
+    font-size:1.9rem;
+  }
+
+  .contact-wrap{
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+}
+
+/* MOBILE (320px–767px) */
+@media(max-width:767px){
+  nav{
+    padding:10px 14px;
+  }
+
+  .logo-group{
+    gap:8px;
+  }
+
+  .logo-group img{
+    height:38px;
+    width:38px;
+    border-radius:8px;
+  }
+
+  .brand{
+    font-size:.95rem;
+  }
+
+  .brand small{
+    font-size:.45rem;
+    letter-spacing:2px;
+  }
+
+  .navlinks{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100dvh;
+    width:82%;
+    max-width:300px;
+    background:var(--bg2);
+    flex-direction:column;
+    align-items:stretch;
+    padding:70px 16px 24px;
+    transition:.25s;
+    border-left:1px solid var(--line);
+  }
+
+  .navlinks.open{
+    right:0;
+  }
+
+  .navlinks button{
+    text-align:left;
+    width:100%;
+    padding:12px 14px;
+    font-size:.9rem;
+  }
+
+  #authArea{
+    display:block;
+    width:100%;
+  }
+
+  #hamburger{
+    display:block;
+  }
+
+  .hero{
+    padding:48px 0 34px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:0 14px;
+  }
+
+  #hero3d{
+    max-width:320px;
+    margin:0 auto;
+  }
+
+  .hero h1{
+    font-size:clamp(1.8rem,9vw,2.6rem);
+  }
+
+  .hero p{
+    font-size:.95rem;
+    line-height:1.6;
+  }
+
+  .hero .btnrow{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .hero .btnrow .btn{
+    width:100%;
+    flex:1 1 auto;
+  }
+
+  .wrap{
+    padding:0 16px;
+  }
+
+  .section-head{
+    margin-bottom:24px;
+  }
+
+  .section-head h2{
+    font-size:1.55rem;
+  }
+
+  .section-head p{
+    font-size:.9rem;
+    line-height:1.55;
+  }
+
+  .contact-wrap{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .admin-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  footer{
+    padding:20px 14px;
+    font-size:.75rem;
+  }
+}
+
+/* EXTRA SMALL MOBILE (320px–400px) */
+@media(max-width:400px){
+  nav{
+    padding:8px 10px;
+  }
+
+  .navlinks{
+    padding:66px 12px 20px;
+  }
+
+  .logo-group img{
+    height:34px;
+    width:34px;
+  }
+
+  .brand{
+    font-size:.85rem;
+  }
+
+  .brand small{
+    font-size:.4rem;
+  }
+
+  .navlinks button{
+    padding:11px 12px;
+    font-size:.85rem;
+  }
+
+  .hero{
+    padding:36px 0 28px;
+  }
+
+  .hero h1{
+    font-size:clamp(1.5rem,8vw,2rem);
+  }
+
+  .hero p{
+    font-size:.88rem;
+  }
+
+  .wrap{
+    padding:0 12px;
+  }
+
+  .section-head h2{
+    font-size:1.35rem;
+  }
+}

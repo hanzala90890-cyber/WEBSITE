@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Smoky Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: #0a0a0f;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Main container for the smoke effect */
+        .smoke-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0f 0%, #141420 100%);
+            overflow: hidden;
+        }
+
+        /* Smoke layers - multiple overlapping elements for depth */
+        .smoke-layer {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            opacity: 0;
+            filter: blur(60px);
+            mix-blend-mode: screen;
+            animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        /* First smoke layer - top right */
+        .smoke-1 {
+            top: -20%;
+            right: -50%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(120, 130, 160, 0.15) 0%, transparent 60%);
+            animation: smokeFlow1 40s infinite linear;
+        }
+
+        /* Second smoke layer - middle right */
+        .smoke-2 {
+            top: 20%;
+            right: -60%;
+            background: radial-gradient(ellipse at 40% 50%, rgba(100, 120, 150, 0.12) 0%, transparent 55%);
+            animation: smokeFlow2 50s infinite linear;
+            animation-delay: -10s;
+            filter: blur(80px);
+        }
+
+        /* Third smoke layer - bottom right */
+        .smoke-3 {
+            bottom: -10%;
+            right: -40%;
+            background: radial-gradient(ellipse at 35% 50%, rgba(90, 110, 140, 0.1) 0%, transparent 50%);
+            animation: smokeFlow3 45s infinite linear;
+            animation-delay: -20s;
+        }
+
+        /* Fourth smoke layer - top area */
+        .smoke-4 {
+            top: -30%;
+            right: -70%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(110, 125, 155, 0.08) 0%, transparent 65%);
+            animation: smokeFlow4 55s infinite linear;
+            animation-delay: -30s;
+            filter: blur(100px);
+        }
+
+        /* Fifth smoke layer - subtle wisps */
+        .smoke-5 {
+            top: 40%;
+            right: -55%;
+            background: radial-gradient(ellipse at 45% 50%, rgba(95, 115, 145, 0.09) 0%, transparent 58%);
+            animation: smokeFlow5 48s infinite linear;
+            animation-delay: -15s;
+            filter: blur(70px);
+        }
+
+        /* Sixth smoke layer - edge enhancement */
+        .smoke-6 {
+            top: 10%;
+            right: -45%;
+            background: radial-gradient(ellipse at 38% 50%, rgba(105, 120, 150, 0.11) 0%, transparent 52%);
+            animation: smokeFlow6 42s infinite linear;
+            animation-delay: -25s;
+        }
+
+        /* Keyframe animations - right to left flow */
+        @keyframes smokeFlow1 {
+            0% {
+                transform: translateX(0) translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateX(-100%) translateY(-3%) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeFlow2 {
+            0% {
+                transform: translateX(0) translateY(0) scale(0.95);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            85% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(-100%) translateY(4%) scale(1.05);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeFlow3 {
+            0% {
+                transform: translateX(0) translateY(0) scale(1.05);
+                opacity: 0;
+            }
+            12% {
+                opacity: 0.55;
+            }
+            50% {
+                opacity: 0.75;
+            }
+            88% {
+                opacity: 0.55;
+            }
+            100% {
+                transform: translateX(-100%) translateY(-2%) scale(0.98);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeFlow4 {
+            0% {
+                transform: translateX(0) translateY(0) scale(1.02);
+                opacity: 0;
+            }
+            18% {
+                opacity: 0.45;
+            }
+            50% {
+                opacity: 0.65;
+            }
+            82% {
+                opacity: 0.45;
+            }
+            100% {
+                transform: translateX(-100%) translateY(5%) scale(1.08);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeFlow5 {
+            0% {
+                transform: translateX(0) translateY(0) scale(0.98);
+                opacity: 0;
+            }
+            14% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.7;
+            }
+                86% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(-100%) translateY(-4%) scale(1.06);
+                opacity: 0;
+            }
+        }
+
+        @keyframes smokeFlow6 {
+            0% {
+                transform: translateX(0) translateY(0) scale(1.03);
+                opacity: 0;
+            }
+            16% {
+                opacity: 0.58;
+            }
+            50% {
+                opacity: 0.78;
+            }
+            84% {
+                opacity: 0.58;
+            }
+            100% {
+                transform: translateX(-100%) translateY(2%) scale(0.99);
+                opacity: 0;
+            }
+        }
+
+        /* Subtle vignette to keep focus on center */
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 10, 15, 0.6) 100%);
+            pointer-events: none;
+        }
+
+        /* Content area - for demonstration */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .content h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #b8c5d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #a0a8b8;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .content button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .content button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Card demonstration */
+        .card {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #8892a6;
+            margin: 0;
+        }
+
+        @media(max-width:767px){
+          .content{padding:2rem 1rem;}
+          .content h1{font-size:clamp(2rem,8vw,3rem);}
+          .content p{font-size:clamp(1rem,3vw,1.2rem);max-width:100%;}
+          .content button{padding:0.85rem 1.5rem;font-size:0.9rem;}
+          .card{margin-top:2rem;padding:1.5rem;max-width:100%;}
+          .card h3{font-size:1.1rem;}
+          .card p{font-size:0.88rem;}
+        }
+
+        @media(max-width:400px){
+          .content{padding:1.5rem 0.75rem;}
+          .content button{padding:0.75rem 1.25rem;font-size:0.85rem;}
+          .card{padding:1.25rem;}
+          .card h3{font-size:1rem;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Smoke background container -->
+    <div class="smoke-container">
+        <div class="smoke-layer smoke-1"></div>
+        <div class="smoke-layer smoke-2"></div>
+        <div class="smoke-layer smoke-3"></div>
+        <div class="smoke-layer smoke-4"></div>
+        <div class="smoke-layer smoke-5"></div>
+        <div class="smoke-layer smoke-6"></div>
+        <div class="vignette"></div>
+    </div>
+
+    <!-- Website content (demonstration) -->
+    <div class="content">
+        <h1>Premium Experience</h1>
+        <p>A sophisticated, modern background that enhances your content without overwhelming it.</p>
+        <button>Get Started</button>
+
+        <div class="card">
+            <h3>Content Stays Clear</h3>
+            <p>The smoke stays subtle and primarily around the edges, ensuring your UI elements remain perfectly readable.</p>
+        </div>
+    </div>
+</body>
+</html>

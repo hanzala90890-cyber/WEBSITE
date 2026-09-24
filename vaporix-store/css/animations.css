@@ -1,0 +1,275 @@
+/* ==========================================
+   ANIMATIONS.CSS - Premium Cinematic Effects
+   ========================================== */
+
+/* Hero Fade In - Smooth & Elegant */
+@keyframes heroFade{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+    filter:blur(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+}
+
+/* Stagger Fade for Cards */
+@keyframes staggerFade{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(0.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* Glow Pulse Effect */
+@keyframes glowPulse{
+  0%, 100%{
+    box-shadow:0 0 20px var(--gold-glow);
+  }
+  50%{
+    box-shadow:0 0 40px var(--gold-glow), 0 0 60px rgba(242,169,59,0.3);
+  }
+}
+
+/* Shimmer Effect for Premium Elements */
+@keyframes shimmer{
+  0%{
+    background-position:200% center;
+  }
+  100%{
+    background-position:-200% center;
+  }
+}
+
+.shimmer{
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(242,169,59,0.3) 50%,
+    transparent 100%
+  );
+  background-size:200% 100%;
+  animation:shimmer 3s linear infinite;
+}
+
+/* Smooth Scale on Hover */
+@keyframes smoothScale{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.05);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* Float Animation */
+@keyframes float{
+  0%, 100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* Rotate Glow */
+@keyframes rotateGlow{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* Fade In Up - Cards Entry */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translate3d(0, 40px, 0);
+  }
+  to{
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+  }
+}
+
+/* Apply Animations */
+.hero h1{
+  animation:heroFade 1s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+.hero p{
+  animation:heroFade 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.btnrow{
+  animation:heroFade 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+  opacity:0;
+}
+
+.card{
+  animation:fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity:0;
+}
+
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+.card:nth-child(3){animation-delay:0.3s;}
+.card:nth-child(4){animation-delay:0.4s;}
+.card:nth-child(5){animation-delay:0.5s;}
+.card:nth-child(6){animation-delay:0.6s;}
+
+/* Smoke Animation */
+.smoke-container{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.smoke{
+  position:absolute;
+  bottom:-150px;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(242,169,59,0.15) 0%, rgba(242,169,59,0.08) 30%, transparent 70%);
+  border-radius:50%;
+  filter:blur(60px);
+  animation:smokeRise 15s ease-in-out infinite;
+  opacity:0;
+}
+
+@keyframes smokeRise{
+  0%{
+    transform:translateY(0) translateX(0) scale(1);
+    opacity:0;
+  }
+  10%{
+    opacity:0.6;
+  }
+  50%{
+    opacity:0.4;
+  }
+  100%{
+    transform:translateY(-120vh) translateX(100px) scale(1.8);
+    opacity:0;
+  }
+}
+
+/* Individual smoke particles with different positions and timings */
+.smoke-1{
+  left:10%;
+  width:250px;
+  height:250px;
+  animation-duration:18s;
+  animation-delay:0s;
+}
+
+.smoke-2{
+  left:30%;
+  width:350px;
+  height:350px;
+  animation-duration:22s;
+  animation-delay:5s;
+}
+
+.smoke-3{
+  left:50%;
+  width:280px;
+  height:280px;
+  animation-duration:20s;
+  animation-delay:10s;
+}
+
+.smoke-4{
+  left:70%;
+  width:320px;
+  height:320px;
+  animation-duration:24s;
+  animation-delay:3s;
+}
+
+.smoke-5{
+  left:85%;
+  width:290px;
+  height:290px;
+  animation-duration:19s;
+  animation-delay:8s;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+
+  .hero h1,
+  .hero p,
+  .btnrow,
+  .card{
+    animation:none;
+    opacity:1;
+  }
+
+  .smoke{
+    display:none;
+  }
+}
+
+/* RESPONSIVE SMOKE */
+@media(max-width:767px){
+  .smoke{
+    width:200px;
+    height:200px;
+    filter:blur(40px);
+  }
+
+  .smoke-1{
+    left:15%;
+    width:180px;
+    height:180px;
+  }
+
+  .smoke-2{
+    left:35%;
+    width:220px;
+    height:220px;
+  }
+
+  .smoke-3{
+    left:55%;
+    width:200px;
+    height:200px;
+  }
+
+  .smoke-4{
+    left:75%;
+    width:210px;
+    height:210px;
+  }
+
+  .smoke-5{
+    left:90%;
+    width:190px;
+    height:190px;
+  }
+}
