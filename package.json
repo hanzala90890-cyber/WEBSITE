@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@neon/config": "^1.7.3",
+    "@neon/env": "^1.4.4"
+  },
+  "devDependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "pg": "^8.23.0"
+  }
+}

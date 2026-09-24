@@ -634,13 +634,53 @@ const defaultProducts = [
   {id:'p3',name:'Vaporix Gold Pen',price:800,img:'https://images.unsplash.com/photo-1583485088034-697b5bc36b90?w=600&q=80',desc:'Matte black pen with gold trim, personalised engraving.'},
   {id:'p4',name:'Vaporix Snapback Cap',price:1800,img:'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&q=80',desc:'Structured cap, embroidered logo, adjustable strap.'}
 ];
-let products = loadJSON('vx_products', defaultProducts);
-if(!localStorage.getItem('vx_products')) saveJSON('vx_products', products);
+const API_BASE = 'https://br-cold-wildflower-b4no8bb9-apiproducts.compute.c-6.us-east-2.aws.neon.tech';
+const ADMIN_TOKEN = 'vaporix2026';
+
+async function fetchProducts() {
+  try {
+    const res = await fetch(API_BASE + '/');
+    if (res.ok) return await res.json();
+  } catch (e) { console.log('API unavailable, using defaults'); }
+  return defaultProducts;
+}
+
+async function apiCreateProduct(data) {
+  const res = await fetch(API_BASE + '/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN },
+    body: JSON.stringify(data)
+  });
+  return await res.json();
+}
+
+async function apiUpdateProduct(id, data) {
+  const res = await fetch(API_BASE + '/' + id, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN },
+    body: JSON.stringify(data)
+  });
+  return await res.json();
+}
+
+async function apiDeleteProduct(id) {
+  await fetch(API_BASE + '/' + id, {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + ADMIN_TOKEN }
+  });
+}
+
+let products = [...defaultProducts];
 let users = loadJSON('vx_users', []);
 let currentUser = loadJSON('vx_current', null);
 let adminOn = false;
+let productsLoaded = false;
 
-/* ---------- AUTH & AGE VERIFICATION FLOW ---------- */
+async function loadProducts(){
+  products = await fetchProducts();
+  productsLoaded = true;
+  if(typeof renderSlider==='function') renderSlider();
+}
 function verifyAge(isAdult) {
   const ageModal = document.getElementById('ageVerification');
   const underageMsg = document.getElementById('underageMsg');
@@ -663,7 +703,7 @@ function verifyAge(isAdult) {
 }
 
 // Check age verification and auth status on page load
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', async function() {
   const ageVerificationModal = document.getElementById('ageVerification');
   const authModal = document.getElementById('authModal');
 
@@ -688,6 +728,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   updateAuth();
+  await loadProducts();
 });
 
 function updateAuth() {
@@ -928,7 +969,7 @@ function handleImageUpload(input){
   reader.readAsDataURL(file);
 }
 
-function saveProduct(e){
+async function saveProduct(e){
   e.preventDefault();
   const id=document.getElementById('pId').value;
   const data={
@@ -938,9 +979,9 @@ function saveProduct(e){
     img:document.getElementById('pImg').value.trim(),
     desc:document.getElementById('pDesc').value.trim()
   };
-  if(id){ products = products.map(p=>p.id===id?data:p); }
-  else { products.push(data); }
-  saveJSON('vx_products',products);
+  let saved;
+  if(id){ saved=await apiUpdateProduct(id, data); products = products.map(p=>p.id===id?saved:p); }
+  else { saved=await apiCreateProduct(data); products.push(saved); }
   e.target.reset(); document.getElementById('pId').value='';
   document.getElementById('pSubmitBtn').textContent='Add product';
   renderAdmin();
@@ -956,10 +997,10 @@ function editProduct(id){
   document.getElementById('pSubmitBtn').textContent='Save changes';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function deleteProduct(id){
+async function deleteProduct(id){
   if(!confirm('Remove this product?')) return;
+  await apiDeleteProduct(id);
   products=products.filter(p=>p.id!==id);
-  saveJSON('vx_products',products);
   renderAdmin();
 }
 
