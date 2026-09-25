@@ -14,7 +14,7 @@ const headers = {
 export default async function(req: Request) {
   const url = new URL(req.url);
   const pathParts = url.pathname.split('/').filter(Boolean);
-  const productId = pathParts[1];
+  const productId = pathParts[0];
 
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 200, headers });

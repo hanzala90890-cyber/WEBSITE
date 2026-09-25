@@ -628,21 +628,38 @@ const LOGO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAc
 function loadJSON(k,fallback){try{const v=localStorage.getItem(k);return v?JSON.parse(v):fallback;}catch(e){return fallback;}}
 function saveJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 
-const defaultProducts = [
+const DEFAULT_PRODUCTS = [
   {id:'p1',name:'Vaporix Steel Bottle',price:1500,img:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80',desc:'Insulated steel bottle, custom name/logo engraving available.'},
   {id:'p2',name:'Vaporix Signature Tee',price:2200,img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80',desc:'Heavyweight cotton tee with the gold Vaporix mark.'},
   {id:'p3',name:'Vaporix Gold Pen',price:800,img:'https://images.unsplash.com/photo-1583485088034-697b5bc36b90?w=600&q=80',desc:'Matte black pen with gold trim, personalised engraving.'},
   {id:'p4',name:'Vaporix Snapback Cap',price:1800,img:'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&q=80',desc:'Structured cap, embroidered logo, adjustable strap.'}
 ];
-const API_BASE = 'https://br-cold-wildflower-b4no8bb9-apiproducts.compute.c-6.us-east-2.aws.neon.tech';
+
+// Neon Products API (serverless function). Connection string stays server-side only.
+const API_BASE = (typeof process!=='undefined' && process.env && process.env.NEON_FUNCTION_APIPRODUCTS_BASE_URL) || 'https://br-cold-wildflower-b4no8bb9-apiproducts.compute.c-6.us-east-2.aws.neon.tech';
 const ADMIN_TOKEN = 'vaporix2026';
+
+function normalizeProduct(p){
+  if(!p) return null;
+  return {
+    id: String(p.id),
+    name: p.name || '',
+    price: Number(p.price) || 0,
+    img: (p.img && p.img.trim()) || DEFAULT_PRODUCTS[0].img,
+    desc: p.desc || ''
+  };
+}
 
 async function fetchProducts() {
   try {
     const res = await fetch(API_BASE + '/');
-    if (res.ok) return await res.json();
-  } catch (e) { console.log('API unavailable, using defaults'); }
-  return defaultProducts;
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const list = await res.json();
+    return Array.isArray(list) ? list.map(normalizeProduct) : [];
+  } catch (e) {
+    console.log('API unavailable, using defaults', e.message);
+    return DEFAULT_PRODUCTS.slice();
+  }
 }
 
 async function apiCreateProduct(data) {
@@ -651,26 +668,29 @@ async function apiCreateProduct(data) {
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN },
     body: JSON.stringify(data)
   });
-  return await res.json();
+  if (!res.ok) throw new Error('Create failed: ' + res.status);
+  return normalizeProduct(await res.json());
 }
 
 async function apiUpdateProduct(id, data) {
-  const res = await fetch(API_BASE + '/' + id, {
+  const res = await fetch(API_BASE + '/' + encodeURIComponent(id), {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ADMIN_TOKEN },
     body: JSON.stringify(data)
   });
-  return await res.json();
+  if (!res.ok) throw new Error('Update failed: ' + res.status);
+  return normalizeProduct(await res.json());
 }
 
 async function apiDeleteProduct(id) {
-  await fetch(API_BASE + '/' + id, {
+  const res = await fetch(API_BASE + '/' + encodeURIComponent(id), {
     method: 'DELETE',
     headers: { 'Authorization': 'Bearer ' + ADMIN_TOKEN }
   });
+  if (!res.ok) throw new Error('Delete failed: ' + res.status);
 }
 
-let products = [...defaultProducts];
+let products = [];
 let users = loadJSON('vx_users', []);
 let currentUser = loadJSON('vx_current', null);
 let adminOn = false;
@@ -679,7 +699,9 @@ let productsLoaded = false;
 async function loadProducts(){
   products = await fetchProducts();
   productsLoaded = true;
-  if(typeof renderSlider==='function') renderSlider();
+  if (typeof renderSlider === 'function') renderSlider();
+  if (typeof renderShop === 'function') renderShop();
+  if (typeof renderAdmin === 'function' && adminOn) renderAdmin();
 }
 function verifyAge(isAdult) {
   const ageModal = document.getElementById('ageVerification');

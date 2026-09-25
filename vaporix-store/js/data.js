@@ -1,40 +1,14 @@
 /* ==========================================
-   DATA.JS - Constants and Default Products
+   DATA.JS - Constants and Slider
    ========================================== */
 
 const WA_NUMBER = "923140329974";
 const ADMIN_PASS = "vaporix2026";
 
-const defaultProducts = [
-  {id:'p1',name:'Vaporix Steel Bottle',price:1500,img:'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80',desc:'Insulated steel bottle, custom name/logo engraving available.'},
-  {id:'p2',name:'Vaporix Signature Tee',price:2200,img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80',desc:'Heavyweight cotton tee with the gold Vaporix mark.'},
-  {id:'p3',name:'Vaporix Gold Pen',price:800,img:'https://images.unsplash.com/photo-1583485088034-697b5bc36b90?w=600&q=80',desc:'Matte black pen with gold trim, personalised engraving.'},
-  {id:'p4',name:'Vaporix Snapback Cap',price:1800,img:'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&q=80',desc:'Structured cap, embroidered logo, adjustable strap.'},
-  {id:'p5',name:'Dior Sauvage Extrait',price:1200,img:'https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Library-Sites-DiorSharedLibrary/default/dwc7572052/images/beauty/0-HOME/BEAUTY/2026/08-AUGUST/Sauvage_Extrait_Mood_Hands_WW_Extrait_1688x3000_V1.jpg?sw=800',desc:'Premium luxury perfume with intense, sophisticated fragrance notes.'}
-];
-
-// Helper functions for localStorage
-function loadJSON(k,fallback){
-  try{
-    const v=localStorage.getItem(k);
-    return v?JSON.parse(v):fallback;
-  }catch(e){
-    return fallback;
-  }
-}
-
-function saveJSON(k,v){
-  try{
-    localStorage.setItem(k,JSON.stringify(v));
-  }catch(e){}
-}
-
-// State
-let products = loadJSON('vx_products', defaultProducts);
-if(!localStorage.getItem('vx_products')) saveJSON('vx_products', products);
-let users = loadJSON('vx_users', []);
-let currentUser = loadJSON('vx_current', null);
-let adminOn = false;
+// Products are loaded from the Neon API by the main app script.
+// This shared global is populated by loadProducts() after the API call.
+// Using `var` so it is shared across script tags (becomes window.products).
+var products = [];
 
 let currentSlide = 0;
 let slideInterval = null;

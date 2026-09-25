@@ -44,7 +44,6 @@ function saveProduct(e){
     products.push(data);
   }
 
-  saveJSON('vx_products',products);
   e.target.reset();
   document.getElementById('pId').value='';
   document.getElementById('pSubmitBtn').textContent='Add product';
@@ -67,6 +66,5 @@ function editProduct(id){
 function deleteProduct(id){
   if(!confirm('Remove this product?')) return;
   products=products.filter(p=>p.id!==id);
-  saveJSON('vx_products',products);
   renderAdmin();
 }
